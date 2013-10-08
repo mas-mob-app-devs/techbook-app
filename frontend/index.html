@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TechBook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link href="css/codiqa.ext.min.css" rel="stylesheet">
+<link href="css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet">
+<link href="css/jquery-mobile.css" rel="stylesheet">
+<link href="css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet">
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.mobile-1.3.1.min.js"></script>
+<script src="js/codiqa.ext.min.js"></script>
+</head>
+<body>
+	<div data-role="page" data-control-title="Home" id="home">
+	<div data-role="panel" id="user_panel" data-position="right" data-display="reveal"
+      data-theme="b">
+      </div>
+	
+		<div data-theme="b" data-role="header">
+			<h3>TechBook</h3>
+			<a id="panel_ref" data-controltype="panelbutton" data-role="button" href="#user_panel"
+          	data-icon="bars" data-iconpos="notext" >
+          </a>
+		</div>
+		<!-- header-->
+		<p align="center"><strong><i>Welcome to Techbook !! </i></strong></p>
+		<div data-role="content">
+			<div id="forums_list"></div>
+		</div>
+	</div>
+
+	<!-- <div data-role="page" data-control-title="Course_forum" id="page3">
+		<div data-role="panel" id="panel2" data-position="left"
+			data-display="reveal" data-theme="a">
+			<ul data-role="listview" data-divider-theme="h" data-inset="false">
+				<li data-role="list-divider" role="heading">Divider</li>
+				<li data-theme="a"><a href="" data-transition="slide">
+						Button </a></li>
+			</ul>
+		</div>
+		<div data-theme="b" data-role="header">
+			<h1>TechBook</h1>
+			<a id="user_panel" data-controltype="panelbutton" data-role="button"
+				href="#panel2" data-icon="bars" data-iconpos="notext"
+				class="ui-btn-left"> </a>
+		</div>
+		<div data-role="content">
+			<ul id="forum_threads_list" data-role="listview"
+				data-divider-theme="b" data-inset="true">
+				<li data-role="list-divider" role="heading">CS6250</li>
+				<li data-theme="d"><a href="#page1" data-transition="slide">
+						Question 1 </a></li>
+				<li data-theme="d"><a href="#page1" data-transition="slide">
+						Question 2 </a></li>
+				<li data-theme="d"><a href="#page1" data-transition="slide">
+						Question 3 </a></li>
+				<li data-theme="d"><a href="#page1" data-transition="slide">
+						Question 4 </a></li>
+			</ul>
+		</div>
+	</div>
+ -->
+	<div id="forum" data-role="page" data-title="Forum">
+		<div data-theme="b" data-role="header" data-position="fixed" id="forum_header">
+			<h1>Forum</h1>
+			<a href="#home" data-icon="back" data-iconpos="left">Back</a>
+		</div>
+		<!-- header -->
+		<div data-role="content">
+			<div id="thread_list"></div>
+		</div>
+	</div>
+
+	<script src="js/techbook.js"></script>
+</body>
+</html>
