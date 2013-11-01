@@ -1,58 +1,112 @@
 <?xml version="1.0"?>
 <api>
 	<description>
-		<![CDATA[This is an API to interact with comments db]]>
+		<![CDATA[This API supports Techbook functionality.]]>
 	</description>
 
-	<command id='user' security='protected'>
-		<description><![CDATA[This simple API lets you add and remove comments]]></description>
+	<command id='department' security='public'>
+		<description><![CDATA[This API element supports interacting with academic information by department.]]></description>
 		
 		<index>
-			<description><![CDATA[This is how you can get a listing of all comments]]></description>
-			
-			<action file='comments.php'><![CDATA[listUsers();]]></action>
-		</index>
-		<command id='comment' security='protected'>
-			<index>
-				<action file='comments.php'><![CDATA[listUserComments($_REST['user']);]]></action>
-			</index>
-			<get>
-				<action file='comments.php'><![CDATA[getUserComment($_REST['user'], $_REST['user/comment']);]]></action>
-			</get>
-		</command>
-	</command>
-
-	<command id='comment' security='protected'>
-		<description><![CDATA[This simple API lets you add and remove comments]]></description>
-		
-		<index>
-			<description><![CDATA[This is how you can get a listing of all comments]]></description>
-			
-			<action file='comments.php'><![CDATA[listComments();]]></action>
+			<description><![CDATA[Provides a list of departments.]]></description>
+			<action file='techbook.php'><![CDATA[listDepartments();]]></action>
 		</index>
 		
 		<get>
-			<description><![CDATA[This is how you can get a specific comment]]></description>
-			
-			<action file='comments.php'><![CDATA[getComment($_REST['comment']);]]></action>
+			<description><![CDATA[Retrieves courses from the specified department.]]></description>
+			<action file='techbook.php'><![CDATA[listCourses($_REST['department']);]]></action>
 		</get>
 		
-		<post>
-			<description><![CDATA[This is how you can create a comment]]></description>
-			
-			<action file='comments.php'><![CDATA[addComment($_POST['commentText']);]]></action>
-		</post>
+		<command id='class' security='public'>
+		<description><![CDATA[Provides element for interacting with class data.]]></description>
 		
-		<put>
-			<description><![CDATA[This is how you can update a comment]]></description>
+			<get>
+				<description><![CDATA[Retrieves information on a specified class.]]></description>
+				<action file='techbook.php'><![CDATA[getCourseInfo($_REST['department'], $_REST['department/class']);]]></action>
+			</get>
 			
-			<action file='comments.php'><![CDATA[updateComment($_REST['comment'],$_POST['commentText']);]]></action>
-		</put>
-		
-		<delete>
-			<description><![CDATA[This is how you can delete a comment]]></description>
+			<command id='forum' security='public'>
+			<description><![CDATA[API element for interacting with class forum.]]></description>
 			
-			<action file='comments.php'><![CDATA[deleteComment($_REST['comment']);]]></action>
-		</delete>
+				<index>
+					<description><![CDATA[Retrieves list of forum topics for specified class.]]></description>
+					<action file='techbook.php'><![CDATA[getCourseForumList($_REST['department'], $_REST['department/class']);]]></action>
+				</index>
+				<get>
+					<description><![CDATA[Retrieves thread information.]]></description>
+					<action file='techbook.php'><![CDATA[getCourseThread($_REST['department'], $_REST['department/class'], $_REST['department/class/forum']);]]></action>
+				</get>
+				<post></post>
+				<put></put>
+			</command>
+			
+		</command>
 	</command>
+
+	<command id='mycourses' security='public'>
+		<description><![CDATA[API letting user interact with list of their courses.]]></description>
+		
+		<index>
+			<description><![CDATA[Retrieves list of user's courses.]]></description>
+			<action file='techbook.php'><![CDATA[listMyCourses();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[Retrieves the specified user's courses. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
+			<action file='techbook.php'><![CDATA[listUserCourses($_REST['mycourses']);]]></action>
+		</get>
+		
+	</command>
+	
+	<command id='recentforums' security='public'>
+		<description><![CDATA[API letting user see recently visited forums.]]></description>
+		
+		<index>
+			<description><![CDATA[Retrieves list of user's recently visited forums.]]></description>
+			<action file='techbook.php'><![CDATA[listMyRecentForums();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[Retrieves the specified user's recetnly visited forums. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
+			<action file='techbook.php'><![CDATA[listUserRecentForums($_REST['recentforums']);]]></action>
+		</get>
+		
+	</command>
+	
+	<command id='markedthreads' security='public'>
+		<description><![CDATA[API letting user see marked threads.]]></description>
+		
+		<index>
+			<description><![CDATA[Retrieves list of user's marked threads.]]></description>
+			<action file='techbook.php'><![CDATA[listMyMarkedThreads();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[Retrieves the specified user's marked threads. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
+			<action file='techbook.php'><![CDATA[listUserMarkedThreads($_REST['markedthreads']);]]></action>
+		</get>
+		
+	</command>
+	
+	<command id='mythreads' security='public'>
+		<description><![CDATA[API letting user see their threads.]]></description>
+		
+		<index>
+			<description><![CDATA[Retrieves list of user's threads.]]></description>
+			<action file='techbook.php'><![CDATA[listMyThreads();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[Retrieves the specified user's threads. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
+			<action file='techbook.php'><![CDATA[listUserThreads($_REST['mythreads']);]]></action>
+		</get>
+		
+	</command>
+	
+	<command id='classthread' security='public'>
+		<description><![CDATA[API letting user lookup an academic thread via threadID.]]></description>
+		
+		<get>
+			<description><![CDATA[Retrieves the specified academic thread.]]></description>
+			<action file='techbook.php'><![CDATA[getClassThread($_REST['classthread']);]]></action>
+		</get>
+		
+	</command>
+	
 </api>

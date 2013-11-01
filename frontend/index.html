@@ -18,8 +18,8 @@
 </head>
 <body>
 	<div data-role="page" data-control-title="Home" id="home">
-	<div data-role="panel" id="user_panel" data-position="right" data-display="reveal"
-      data-theme="b">
+	<div data-role="panel" id="user_panel" data-position="left" data-display="reveal"
+      data-theme="d">
       </div>
 	
 		<div data-theme="b" data-role="header">
@@ -27,53 +27,60 @@
 			<a id="panel_ref" data-controltype="panelbutton" data-role="button" href="#user_panel"
           	data-icon="bars" data-iconpos="notext" >
           </a>
+          <a id="search_button" href="#search_college" data-icon="search" data-iconpos="notext" onclick="load_search()">Search</a>
 		</div>
 		<!-- header-->
-		<p align="center"><strong><i>Welcome to Techbook !! </i></strong></p>
+		
 		<div data-role="content">
+			<p align="center"><strong><i>Welcome to Techbook !! </i></strong></p>
 			<div id="forums_list"></div>
 		</div>
 	</div>
 
-	<!-- <div data-role="page" data-control-title="Course_forum" id="page3">
-		<div data-role="panel" id="panel2" data-position="left"
-			data-display="reveal" data-theme="a">
-			<ul data-role="listview" data-divider-theme="h" data-inset="false">
-				<li data-role="list-divider" role="heading">Divider</li>
-				<li data-theme="a"><a href="" data-transition="slide">
-						Button </a></li>
-			</ul>
-		</div>
-		<div data-theme="b" data-role="header">
-			<h1>TechBook</h1>
-			<a id="user_panel" data-controltype="panelbutton" data-role="button"
-				href="#panel2" data-icon="bars" data-iconpos="notext"
-				class="ui-btn-left"> </a>
-		</div>
-		<div data-role="content">
-			<ul id="forum_threads_list" data-role="listview"
-				data-divider-theme="b" data-inset="true">
-				<li data-role="list-divider" role="heading">CS6250</li>
-				<li data-theme="d"><a href="#page1" data-transition="slide">
-						Question 1 </a></li>
-				<li data-theme="d"><a href="#page1" data-transition="slide">
-						Question 2 </a></li>
-				<li data-theme="d"><a href="#page1" data-transition="slide">
-						Question 3 </a></li>
-				<li data-theme="d"><a href="#page1" data-transition="slide">
-						Question 4 </a></li>
-			</ul>
-		</div>
-	</div>
- -->
 	<div id="forum" data-role="page" data-title="Forum">
 		<div data-theme="b" data-role="header" data-position="fixed" id="forum_header">
 			<h1>Forum</h1>
-			<a href="#home" data-icon="back" data-iconpos="left">Back</a>
+			<a href="#home" data-icon="back" data-iconpos="notext">Back</a>
+			<a href="#search_college" data-icon="search" data-iconpos="notext" onclick="load_search()" >Search</a>
 		</div>
 		<!-- header -->
 		<div data-role="content">
 			<div id="thread_list"></div>
+			
+		</div>
+	</div>
+	
+	<div id="course_info" data-role="page" data-title="Course Info">
+		<div data-theme="b" data-role="header" data-position="fixed" id="course_header">
+			<h1>Course Info</h1>
+			<a href="#home" data-icon="back" data-iconpos="notext">Back</a>
+			<a href="#search_college" data-icon="search" data-iconpos="notext" onclick="load_search()">Search</a>
+		</div>
+		<!-- header -->
+		<div data-role="content">
+			<div id="course_data"></div>
+		</div>
+	</div>
+	
+	<div id="search_college" data-role="page" data-title="Search Course">
+		<div data-theme="b" data-role="header" data-position="fixed" id="course_header">
+			<h1>Search Course</h1>
+			<a href="#home" data-icon="back" data-iconpos="notext">Back</a>
+		</div>
+		<!-- header -->
+		<div data-role="content">
+			<div id="search_data"></div>
+		</div>
+	</div>
+	
+	<div id="search_class" data-role="page" data-title="Search Class">
+		<div data-theme="b" data-role="header" data-position="fixed" id="course_header">
+			<h1>Search</h1>
+			<a href="#search_college" data-icon="back" data-iconpos="left" data-iconpos="notext">Back</a>
+		</div>
+		<!-- header -->
+		<div data-role="content">
+			<div id="search_class_data"></div>
 		</div>
 	</div>
 

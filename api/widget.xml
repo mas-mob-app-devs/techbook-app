@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding = "utf-8" ?>
-<widget title="Comments" security="protected">
+<widget title="Techbook" security="protected">
     <library name="jquery"/>
     <library name="jquery.tmpl"/> 
     <library name="jquery.url"/> 
     
-   	<css file="comments.css"/>
-    <html file="comments.html"/>
-	<javascript file="comments.js"/>
+   	
+    <html file="index.html"/>
+	<javascript file="js/techbook.js"/>
 	
     <library name="jquery.mobile"/> 
+    <css file="css/codiqa.ext.min.css"/>
     <library name="gtmob"/>
     
     <manifest>
