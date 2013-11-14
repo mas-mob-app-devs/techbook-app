@@ -45,8 +45,19 @@
 		</div>
 		<!-- header -->
 		<div data-role="content">
+			<a href="#create_thread_popup" data-role="button" data-inline="true" data-position-to="window" data-icon="Plus" data-rel="popup" data-transition="pop">Create Thread</a>
+			<div data-role="popup" id="create_thread_popup" class="ui-content">
+			<form id="post_thread_form" data-ajax="false">
+  				<div data-role="fieldcontain">
+	    			<label for="threadSubject">Subject</label>
+	    			<input type="text" name="threadSubject" id="threadSubject" value=""  />
+	    			<label for="threadPost">Content</label>
+	    			<textarea name="threadPost" id="threadPost" ></textarea> 
+	    			<button id="create_thread" type="submit" data-theme="b" data-inline="true">Post</button>
+				</div>
+			</form>	
+			</div>
 			<div id="thread_list"></div>
-			
 		</div>
 	</div>
 	
@@ -57,8 +68,12 @@
 			<a href="#search_college" data-icon="search" data-iconpos="notext" onclick="load_search()">Search</a>
 		</div>
 		<!-- header -->
+		<div id="course_data">
 		<div data-role="content">
-			<div id="course_data"></div>
+			<div id="goto_course"><a href="#forum" id="goto_course_button" type="button" data-inline="true" data-mini="true" data-icon="grid" onclick="showCollapsibleThreads(\''+ course +'\')"> Forum </a>
+			<input id="mark_course_button" type="button" data-inline="true" data-mini="true" data-icon="Plus" onclick="addToMyCourses()" value="Add to My course" /></div></div>
+			<h3>About the course</h3>
+			<div id="course_content"><p> This is a course in mobile app development and services being taught by  Russell J Clark</p></div>
 		</div>
 	</div>
 	
