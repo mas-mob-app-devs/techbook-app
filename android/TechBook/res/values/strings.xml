@@ -8,5 +8,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_course">CourseActivity</string>
     <string name="title_activity_forum">ForumActivity</string>
+    <string name="button_login">Login</string>
+    <string name="title_activity_logged_in">LoggedInActivity</string>
+    <string name="techbook_logo_description">Techbook Logo</string>
 
 </resources>
