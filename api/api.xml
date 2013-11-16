@@ -36,6 +36,7 @@
 					<description><![CDATA[Retrieves thread information.]]></description>
 					<action file='techbook.php'><![CDATA[getCourseThread($_REST['department'], $_REST['department/class'], $_REST['department/class/forum']);]]></action>
 				</get>
+<<<<<<< HEAD
 				<post>
 					<description><![CDATA[Posts a new thread.]]></description>
 					<action file='techbook.php'><![CDATA[addCourseThread($_REST['department'], $_REST['department/class'], $_POST['threadSubject'], $_POST['threadPost']);]]></action>
@@ -51,6 +52,10 @@
 				
 				</command>
 				
+=======
+				<post></post>
+				<put></put>
+>>>>>>> upstream/master
 			</command>
 			
 		</command>
@@ -67,6 +72,7 @@
 			<description><![CDATA[Retrieves the specified user's courses. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
 			<action file='techbook.php'><![CDATA[listUserCourses($_REST['mycourses']);]]></action>
 		</get>
+<<<<<<< HEAD
 		<post>
 			<description><![CDATA[Posts a new course in the user's list of courses.]]></description>
 			<action file='techbook.php'><![CDATA[addMyCourse($_POST['courseDepartment'], $_POST['courseCode']);]]></action>
@@ -77,6 +83,14 @@
 	<command id='recentforums' security='public'>
 		<description><![CDATA[API letting user see recently visited forums.]]></description>
 		
+=======
+		
+	</command>
+	
+	<command id='recentforums' security='public'>
+		<description><![CDATA[API letting user see recently visited forums.]]></description>
+		
+>>>>>>> upstream/master
 		<index>
 			<description><![CDATA[Retrieves list of user's recently visited forums.]]></description>
 			<action file='techbook.php'><![CDATA[listMyRecentForums();]]></action>
@@ -90,6 +104,7 @@
 	
 	<command id='markedthreads' security='public'>
 		<description><![CDATA[API letting user see marked threads.]]></description>
+<<<<<<< HEAD
 		
 		<index>
 			<description><![CDATA[Retrieves list of user's marked threads.]]></description>
@@ -104,10 +119,23 @@
 			<action file='techbook.php'><![CDATA[markThread($_POST['threadID']);]]></action>
 		</post>
 		
+=======
+		
+		<index>
+			<description><![CDATA[Retrieves list of user's marked threads.]]></description>
+			<action file='techbook.php'><![CDATA[listMyMarkedThreads();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[Retrieves the specified user's marked threads. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
+			<action file='techbook.php'><![CDATA[listUserMarkedThreads($_REST['markedthreads']);]]></action>
+		</get>
+		
+>>>>>>> upstream/master
 	</command>
 	
 	<command id='mythreads' security='public'>
 		<description><![CDATA[API letting user see their threads.]]></description>
+<<<<<<< HEAD
 		<index>
 		
 			<description><![CDATA[Retrieves list of user's threads.]]></description>
@@ -136,6 +164,28 @@
 			<description><![CDATA[Registers the currently logged-in user.]]></description>
 			<action file='techbook.php'><![CDATA[register();]]></action>
 		</index>
+=======
+		
+		<index>
+			<description><![CDATA[Retrieves list of user's threads.]]></description>
+			<action file='techbook.php'><![CDATA[listMyThreads();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[Retrieves the specified user's threads. DEVELOPMENT PURPOSES ONLY - NOT TO GO TO PRODUCTION]]></description>
+			<action file='techbook.php'><![CDATA[listUserThreads($_REST['mythreads']);]]></action>
+		</get>
+		
+	</command>
+	
+	<command id='classthread' security='public'>
+		<description><![CDATA[API letting user lookup an academic thread via threadID.]]></description>
+		
+		<get>
+			<description><![CDATA[Retrieves the specified academic thread.]]></description>
+			<action file='techbook.php'><![CDATA[getClassThread($_REST['classthread']);]]></action>
+		</get>
+		
+>>>>>>> upstream/master
 	</command>
 	
 </api>
