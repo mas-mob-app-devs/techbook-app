@@ -40,9 +40,31 @@
                 throw new Exception('No Records Found');
             }
         }
+		
+		return $resultsArray;
+    }
+	
+	function getDBResultsArrayNoDie($dbQuery,$dieOnError=True){
+        $dbResults=mysql_query($dbQuery);
+        
+        if(!$dbResults){
+            if($dieOnError){
+                $GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 500 Internal Server Error");
+                die();
+            }else{
+                throw new Exception('Query Execute Failed');
+            }
+        }
+        
+        $resultsArray = array();
+        if(mysql_num_rows($dbResults) > 0){
+            while($row = mysql_fetch_assoc($dbResults)){
+                $resultsArray[] = $row;
+            }	
+        }
         
         return $resultsArray;
-    }
+	}
     
     function getDBResultRecord($dbQuery,$dieOnError=True){
         $dbResults=mysql_query($dbQuery);
