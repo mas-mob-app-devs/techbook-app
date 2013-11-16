@@ -8,6 +8,8 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -25,6 +27,7 @@
         <activity
             android:name="edu.gatech.techbook.HomeActivity"
             android:label="@string/title_activity_home" >
+            
         </activity>
         <activity
             android:name="edu.gatech.techbook.CourseActivity"
@@ -37,6 +40,20 @@
         <activity
             android:name="edu.gatech.techbook.ForumActivity"
             android:label="@string/title_activity_forum" >
+        </activity>
+        <activity
+            android:name="edu.gatech.techbook.LoggedInActivity"
+            android:label="@string/title_activity_logged_in" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="loggedin"
+                    android:scheme="techbook" />
+            </intent-filter>
         </activity>
     </application>
 
