@@ -1,7 +1,7 @@
 var recent_list = [ 'CS6250', 'EC6505', 'ME3303' ];
 var my_list = [ 'CS6250', 'CS6150', 'CS3303' ];
 
-<<<<<<< HEAD
+
 var course_threads = '{ "threadlist" :[{"course_name" : "CS6150","threads" : [{"thread_id" : "1","thread_subject" : "Info needed about class CS6150", "thread_content" : " Instructors: Gregory Abowd (Office hours: Mon 1-2pm in TSRB) and Santosh Vempala (Office hours: Fri, 9-10am in Klaus 2222) TA: Yi Han (Office hours: Tue, 1-3pm in TSRB).  C4G is a project-based research, education and service initiative of the College of Computing. ","posts" : [{"post_id" : "1","user" : "user1","post_text" : "We have a master list of project topics over the summer along with partners in the field for each topic. It will be up to student teams to determine their precise projects based on this list."}, {"post_id" : "2","user" : "user2","post_text" : "user2 first post"}]}, {"thread_id" : "2","thread_subject" : "Important topics for quiz ??", "thread_content" : " What are the most important topics for this quiz?? ","posts" : [{"post_id" : "1","user" : "Jon","post_text" : "Read all or none :) "}, {"post_id" : "2","user" : "Tom","post_text" : "You cannot read all :( "}]}]}, {"course_name" :"CS6250", "threads" : [{ "thread_id" : "1", "thread_subject" :"Need info on 6250", "thread_content" : "Is this an interesting class ??", "posts" : [{ "post_id" : "1", "user" : "user2", "post_text" :"user2 first post" }]}] }]}';
 populateUserList('Ranjan');
 
@@ -20,7 +20,7 @@ function populateUserList(user) {
 
 	$('#forums_list').html(recent_forum + user_course);
 	$('#user_panel').html(recent_forum + user_course);
-=======
+
 var recentForumURL = "/developer/adehn3/api/techbook/recentforums/";
 var myCoursesURL = "/developer/adehn3/api/techbook/mycourses/";
 
@@ -28,7 +28,7 @@ var course_threads = '{ "threadlist" :[{"course_name" : "CS6150","threads" : [{"
 var active_course ;
 var active_thread;
 populateUserList();
->>>>>>> 58d1e824c71a28f4e5b66996d3685c8819a6cdf4
+
 
 function populateUserList() {
 	$('#forums_list').html('');
@@ -260,7 +260,7 @@ function changeMarkButton(i) {
 		$(checkid).button("refresh");
 
 }
-=======
+
 }
 }
 
@@ -367,4 +367,3 @@ function load_search(){
 		$('#search_class_data').html(html);
 		$('#search_class_data').trigger('create');
 	} 
->>>>>>> 58d1e824c71a28f4e5b66996d3685c8819a6cdf4

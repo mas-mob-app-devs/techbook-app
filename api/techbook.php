@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 <?php
 
 	//include 'db_credentials.php';
@@ -431,7 +429,4 @@
 			mysql_real_escape_string($prismId));
 		$result = getDBResultInserted($user_insert, 'prismID');
 	}
-	
-	
->>>>>>> 58d1e824c71a28f4e5b66996d3685c8819a6cdf4
 ?>
