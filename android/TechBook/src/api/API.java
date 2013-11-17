@@ -1,5 +1,5 @@
 package api;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.restlet.resource.ResourceException;
 public class API implements DataProvider{
 
 	@Override
-	public List<Course> getMyCourses(String user) {
+	public List<Course> getMyRecentForums(String user) {
 		List<Course> myList =new ArrayList<Course>();
 		
 		try {
@@ -41,11 +41,6 @@ public class API implements DataProvider{
 	return myList;
 	}
 
-	@Override
-	public String[] getMyRecentForums() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Department> getDepartments() {
@@ -106,21 +101,37 @@ List<String> myList =new ArrayList<String>();
 	}
 
 	@Override
-	public String[] getForumTopics() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Topic> getForumTopics(String departmentCode, String course) {
+List<Topic> myList =new ArrayList<Topic>();
+		
+		try {
+			ClientResource client = new ClientResource("http://dev.m.gatech.edu/developer/adehn3/api/techbook/department/"+departmentCode+"/class/"+course+"/forum");
+			JsonRepresentation jsonRep = new JsonRepresentation(client.get());
+			
+			JSONArray ja =jsonRep.getJsonArray();
+			JSONObject jo=null;
+			
+			for(int i=0; i < ja.length(); i++){
+				jo=ja.getJSONObject(i);
+				Topic newTopic= new Topic(jo.get("prismID").toString(),jo.get("threadID").toString(),jo.get("subject").toString(),jo.get("first_post").toString(),jo.get("timestamp").toString());
+			    myList.add(newTopic);
+			}//end for loop
+			
+			
+		} catch (ResourceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	return myList;
 	}
 
-	@Override
-	public String[] getThread() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public String[] getUsersThreads() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
 
 }

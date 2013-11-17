@@ -4,18 +4,15 @@ import java.util.List;
 
 public interface DataProvider {
 
-	public List<Course> getMyCourses(String user);
 	
-	public String[] getMyRecentForums();
+	
+	public List<Course> getMyRecentForums(String user);
 	
 	public List<Department> getDepartments();
 	
 	public List<String> getSpecificDepartment(String departmentCode);
 	
-	public String[] getForumTopics();
+	public List<Topic> getForumTopics(String departmentCode, String course);
 	
-	public String[] getThread();
-	
-	public String[] getUsersThreads();
 
 }

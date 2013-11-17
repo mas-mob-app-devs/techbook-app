@@ -1,6 +1,6 @@
 package edu.gatech.techbook;
 
-import network.NetInterfacer;
+
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ public class HomeActivity extends Activity {
 	    protected String doInBackground(String... params) {
 	       
 	            
-	                String result = NetInterfacer.getPath();
+	                String result = "deleted NetInterfacer, use API instead";
 	                return result;
 	           
 	         

@@ -3,7 +3,7 @@ package api;
 public class Course {
 
 
-String timestamp, department_code, courseNumber;
+private String timestamp, department_code, courseNumber;
 
 	public Course(String timestamp, String department_code, String courseNumber){
 		this.timestamp=timestamp;

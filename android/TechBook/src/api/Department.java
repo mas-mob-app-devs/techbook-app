@@ -1,7 +1,7 @@
 package api;
 
 public class Department {
-	String department_code, college_name, department_name;
+	private String department_code, college_name, department_name;
 
 	public Department(String department_code, String college_name, String department_name){
 		this.department_code=department_code;
