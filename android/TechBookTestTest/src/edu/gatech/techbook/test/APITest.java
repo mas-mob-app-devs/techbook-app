@@ -7,12 +7,19 @@ import junit.framework.TestCase;
 
 public class APITest extends TestCase {
 
+
+	API newAPI = new API("PHPSESSID", "6tder7n69cngnacqcb476fhjq3");
+
+	public static void setUpBeforeClass() throws Exception {
+
+	}
 	protected void setUp() throws Exception {
 		super.setUp();
+
 	}
 
 	public void testGetDepartments() {
-		API newAPI =new API();
+		//	API newAPI =new API();
 		List<Department> myList = newAPI.getDepartments();
 		assertEquals("Computer Science",myList.get(0).getDepartmentName());
 		assertEquals("CS", myList.get(0).getDepartmentCode());
@@ -21,27 +28,57 @@ public class APITest extends TestCase {
 	}
 
 	public void testGetSpecificDepartment() {
-		API newAPI =new API();
+		//	API newAPI =new API();
 		List<String> myList = newAPI.getSpecificDepartment("ECE");
 		assertEquals("ECE2031",myList.get(0).toString());
 		assertEquals("ECE2020",myList.get(1).toString());
 	}
-	
+
 	public void testGetMyRecentForums(){
-		API newAPI = new API();
+		//	API newAPI = new API();
 		List<Course> myList = newAPI.getMyRecentForums("jruiz30");
-		assertEquals("CS1332", myList.get(0).getCourseNumber());
+		assertEquals("CS2110", myList.get(0).getCourseNumber());
 	}
-	
+
+	public void testGetMyRecentForumsCookie(){
+		//API newAPI = new API("PHPSESSID", "6tder7n69cngnacqcb476fhjq3");
+		List<Course> myList = newAPI.getMyRecentForumsCookie();
+		assertEquals("CS2110", myList.get(0).getCourseNumber());
+	}
+
+	public void testGetMyCourses(){
+		//	API newAPI = new API();
+		List<Course> myList = newAPI.getMyCourses("jruiz30");
+		assertEquals("CS1331", myList.get(0).getCourseNumber());
+	}
+
+	public void testGetMyCoursesCookie(){
+		//	API newAPI = new API("PHPSESSID","6tder7n69cngnacqcb476fhjq3");
+		List<Course> myList = newAPI.getMyCoursesCookie();
+		assertEquals("CS1331", myList.get(0).getCourseNumber());
+	}
+
+
 	public void testGetTopics(){
-		API newAPI = new API();
+		//	API newAPI = new API();
 		List<Topic> myList = newAPI.getForumTopics("CS", "CS1331");
-	//	System.out.println(myList.get(0).toString());
+		//	System.out.println(myList.get(0).toString());
 		assertEquals("rkumar68", myList.get(0).getPrismID());
 		assertEquals("44", myList.get(0).getThreadID());
 		assertEquals("new thread", myList.get(0).getSubject());
 		assertEquals("Need help", myList.get(0).getFirst_post());
 		assertEquals("2013-11-04 18:07:18", myList.get(0).getTimestamp());
+	}
+
+	public void testGetThreadInformation(){
+		//	API newAPI = new API();
+		Topic newTopic = newAPI.getThread("CS", "CS1331","1");
+		//	System.out.println(myList.get(0).toString());
+		assertEquals("user1", newTopic.getPrismID());
+		assertEquals("user2",newTopic.getPosts().get(0).getPrismID());
+		assertEquals("Hey, I'm commenting on your thread!",newTopic.getPosts().get(0).getPost());
+		assertEquals("2013-10-07 14:46:52",newTopic.getPosts().get(0).getTimeStamp());
+
 	}
 
 }
