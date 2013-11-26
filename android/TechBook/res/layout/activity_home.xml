@@ -10,22 +10,37 @@
 
     <TextView
         android:id="@+id/recentForumsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/CodeFont"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="52dp"
         android:text="My Recent Forums"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+     <ListView
+        android:id="@+id/recentForumList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/recentForumsTextView" >
+    </ListView>
+
 
     <TextView
         android:id="@+id/mycoursesTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recentForumsTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="138dp"
+        style="@style/CodeFont"
+        android:layout_below="@+id/recentForumList"
+        android:layout_centerInParent="true"
         android:text="My Courses"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ListView
+        android:id="@+id/myCoursesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/mycoursesTextView" >
+    </ListView>
 
 </RelativeLayout>
