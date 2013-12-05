@@ -33,8 +33,4 @@
         <item name="android:clickable">true</item>
     </style>
 
-    <style name="ButtonNormalTextWithIcon" parent="ButtonNormalText">
-        <item name="android:drawableLeft">@drawable/android_calculator</item>
-    </style>
-
 </resources>

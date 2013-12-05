@@ -1,15 +1,20 @@
 package edu.gatech.techbook;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.support.v4.app.NavUtils;
+import android.widget.TextView;
+import api.API;
 
 public class CourseActivity extends Activity {
+	
+	private API loggedInApi = LoggedInActivity.loggedInApi;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +22,17 @@ public class CourseActivity extends Activity {
 		setContentView(R.layout.activity_course);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		setTitle((String)getIntent().getExtras().get("course"));
+		String courseName = (String)getIntent().getExtras().get("course");
+		setTitle(courseName);
 		Button addCourse = (Button) findViewById(R.id.addCourseBtn);
 		Button goToForum = (Button) findViewById(R.id.goToForum);
 		addCourse.setOnClickListener(new AddCourseBtnClickListener());
 		goToForum.setOnClickListener(new GoToForumBtnClickListener());
+		TextView about = (TextView) findViewById(R.id.about);
+		about.setText("About " + courseName);
+		TextView aboutText = (TextView) findViewById(R.id.aboutCourseText);
+		//aboutText.setEms(ems)
+		aboutText.setText("This is a course in mobile app development and services being taught by  Russell J Clark");
 		
 	}
 
@@ -63,16 +74,19 @@ public class CourseActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			
-			
 		}
 	}
 	
 	private class GoToForumBtnClickListener implements OnClickListener{
 
 		@Override
-		public void onClick(View v) {
-			// TODO -- start the forum activity with the course name as intent
-			
+		public void onClick(View view) {
+			Intent intent = new Intent(view.getContext(), ForumActivity.class);
+			String courseName = (String)getIntent().getExtras().get("course");
+			intent.putExtra("course", courseName);
+			String dept = courseName.replace(courseName.subSequence(courseName.length() - 4, courseName.length()), "");
+			intent.putExtra("department", dept);
+			view.getContext().startActivity(intent);
 		}
 		
 	}
