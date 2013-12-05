@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.restlet.data.Cookie;
 import org.restlet.data.Form;
-import org.restlet.data.MediaType;
+
 import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
@@ -20,7 +20,6 @@ import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 import org.restlet.util.Series;
 
-import android.content.ClipData.Item;
 
 
 
@@ -30,8 +29,7 @@ public class API  extends ServerResource  implements DataProvider{
 	private Cookie myCookie;
 
 	public API(String cookieName, String cookieValue){
-		this.cookieName=cookieName;
-		this.cookieValue=cookieValue;
+		
 		this.myCookie = new Cookie(cookieName, cookieValue);//cookie here
 
 	}
@@ -49,7 +47,6 @@ public class API  extends ServerResource  implements DataProvider{
  */
 	public List<Course> getMyRecentForumsCookie() {
 		List<Course> myList =new ArrayList<Course>();
-		//Cookie myCookie = new Cookie(cookieName, cookieValue);//cookie here
 
 		try {
 			ClientResource client = new ClientResource("http://dev.m.gatech.edu/developer/adehn3/api/techbook/recentforums/");
@@ -249,7 +246,7 @@ public class API  extends ServerResource  implements DataProvider{
  */
 	public List<Course> getMyCoursesCookie() {
 		List<Course> myList =new ArrayList<Course>();
-		//Cookie myCookie = new Cookie(cookieName, cookieValue);
+		
 
 		try {
 			ClientResource client = new ClientResource("http://dev.m.gatech.edu/developer/adehn3/api/techbook/mycourses/");
@@ -327,12 +324,8 @@ public class API  extends ServerResource  implements DataProvider{
 	 * @param courseNumber Examples are CS1331, ECE2031
 	 */
 		public void postTopic(String departmentCode, String courseNumber, String subject, String first_post) {
-		//	List<Post> myList =new ArrayList<Post>(); //I'll pass this into the last element of the Topic constructor
-		//	Topic newTopic=null;
 			String data=null;
-			Representation result;
 			
-		  //  result.setMediaType(MediaType.)
 			String url ="http://dev.m.gatech.edu/developer/adehn3/api/techbook/department/"+departmentCode+"/class/"+courseNumber+"/forum";
 			try {
 				Series<Cookie> seriesCookie=new Series<Cookie>(Cookie.class); //create series
@@ -341,54 +334,15 @@ public class API  extends ServerResource  implements DataProvider{
 				ClientResource client = new ClientResource(url);
 				client.setCookies(seriesCookie); //addied series to ClientResource
 				
-				//JsonRepresentation jsonRep = new JsonRepresentation(client.get());
-				//System.out.println(url);
-				//				JSONArray ja =jsonRep.getJsonArray(); //The debugger says this is where failure occurs!
-				//JSONObject jo=jsonRep.getJsonObject();
-				
-				
-				//I create a JSON object, add the key/value pairs, then I invoke client.post. Is that it?
-//				JSONObject jo= new JSONObject();
-//			//	jo.put("prismID", prismID);  //This should be gotten from cookie I believe
-//				jo.put("subject", subject);
-//				jo.put("first_post", first_post);
+			
 				Map<String, String> params = new HashMap<String, String>();
 				params.put("threadSubject", subject);
 				params.put("threadPost", first_post);
 				
 				data = urlEncode(params);
-				//data="threadSubject="+subject+"&threadPost="+first_post;
-//				client.post(data, MediaType.MESSAGE_HTTP);
-//				client.post(myCookie, MediaType.APPLICATION_HTTP_COOKIES);
-//				client.post(data, MediaType.APPLICATION_HTTP_COOKIES);
-//				client.post(data, MediaType.TEXT_PLAIN);
-				//result = client.post(data, MediaType.APPLICATION_WWW_FORM);
-				//result.setMediaType(MediaType.APPLICATION_WWW_FORM);
+		    client.post(getRepresentation(params));
 				
-		        Representation r = client.post(getRepresentation(params));
-				
-				
-		//		System.out.println(r.getText());
-				System.out.println("done");
-				
-				
-				
-				
-				//JsonRepresentation jsonRep = new JsonRepresentation(client.post(jo));
-				
-				
-//				JSONArray ja=jo.getJSONArray("posts");
-//				for(int i=0; i<ja.length();i++){
-//					JSONObject j2=ja.getJSONObject(i);
-//					Post newPost =new Post(j2.getString("prismID").toString(),j2.getString("post").toString(),j2.getString("timestamp").toString());
-//					myList.add(newPost);
-//				}//end for loop
-//
-//	            //I instantiate this at the end, because I need my list of Posts before I can use the constructor properly
-//				newTopic= new Topic(jo.get("prismID").toString(),jo.get("threadID").toString(),jo.get("subject").toString(),jo.get("first_post").toString(),jo.get("timestamp").toString(),myList);
-
-
-
+	
 			} catch (ResourceException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -416,8 +370,7 @@ public class API  extends ServerResource  implements DataProvider{
 		 */
 			public void addToMyCourses(String departmentCode, String courseNumber) {
 			
-					String data=null;
-					Representation result;
+				String data=null;
 					
 					String url ="http://dev.m.gatech.edu/developer/adehn3/api/techbook/mycourses/";
 					try {
@@ -432,10 +385,7 @@ public class API  extends ServerResource  implements DataProvider{
 						
 						params.put("courseDepartment", departmentCode);
 						params.put("courseCode", courseNumber);
-						//params.put("courseDepartment", courseNumber);
-						//params.put("courseCode", departmentCode);
-						//mycourses courseDepartment && courseCode
-						//marked threads  threadID
+					
 						data = urlEncode(params);
 						
 				        Representation r = client.post(getRepresentation(params));
@@ -460,12 +410,7 @@ public class API  extends ServerResource  implements DataProvider{
 			 * @param courseNumber Examples are CS1331, ECE2031
 			 */
 				public void bookmarkThreads(String threadID) {
-					//	List<Post> myList =new ArrayList<Post>(); //I'll pass this into the last element of the Topic constructor
-					//	Topic newTopic=null;
-						String data=null;
-						Representation result;
-						
-					  //  result.setMediaType(MediaType.)
+					String data=null;
 						String url ="http://dev.m.gatech.edu/developer/adehn3/api/techbook/markedthreads/";
 						try {
 							Series<Cookie> seriesCookie=new Series<Cookie>(Cookie.class); //create series
@@ -473,55 +418,15 @@ public class API  extends ServerResource  implements DataProvider{
 							
 							ClientResource client = new ClientResource(url);
 							client.setCookies(seriesCookie); //added series to ClientResource
-							
-							//JsonRepresentation jsonRep = new JsonRepresentation(client.get());
-							//System.out.println(url);
-							//				JSONArray ja =jsonRep.getJsonArray(); //The debugger says this is where failure occurs!
-							//JSONObject jo=jsonRep.getJsonObject();
-							
-							
-							//I create a JSON object, add the key/value pairs, then I invoke client.post. Is that it?
-//							JSONObject jo= new JSONObject();
-//						//	jo.put("prismID", prismID);  //This should be gotten from cookie I believe
-//							jo.put("subject", subject);
-//							jo.put("first_post", first_post);
+	
 							Map<String, String> params = new HashMap<String, String>();
 							params.put("threadID", threadID);
-							//params.put("courseCode", departmentCode);
-							//mycourses courseDepartment && courseCode
-							//marked threads  threadID
+	
 							data = urlEncode(params);
-							//data="threadSubject="+subject+"&threadPost="+first_post;
-//							client.post(data, MediaType.MESSAGE_HTTP);
-//							client.post(myCookie, MediaType.APPLICATION_HTTP_COOKIES);
-//							client.post(data, MediaType.APPLICATION_HTTP_COOKIES);
-//							client.post(data, MediaType.TEXT_PLAIN);
-							//result = client.post(data, MediaType.APPLICATION_WWW_FORM);
-							//result.setMediaType(MediaType.APPLICATION_WWW_FORM);
+	
+					      client.post(getRepresentation(params));
 							
-					        Representation r = client.post(getRepresentation(params));
-							
-							
-					//		System.out.println(r.getText());
-							System.out.println("done");
-							
-							
-							
-							
-							//JsonRepresentation jsonRep = new JsonRepresentation(client.post(jo));
-							
-							
-//							JSONArray ja=jo.getJSONArray("posts");
-//							for(int i=0; i<ja.length();i++){
-//								JSONObject j2=ja.getJSONObject(i);
-//								Post newPost =new Post(j2.getString("prismID").toString(),j2.getString("post").toString(),j2.getString("timestamp").toString());
-//								myList.add(newPost);
-//							}//end for loop
-			//
-//				            //I instantiate this at the end, because I need my list of Posts before I can use the constructor properly
-//							newTopic= new Topic(jo.get("prismID").toString(),jo.get("threadID").toString(),jo.get("subject").toString(),jo.get("first_post").toString(),jo.get("timestamp").toString(),myList);
-
-
+		
 
 						} catch (ResourceException e) {
 							// TODO Auto-generated catch block
@@ -576,12 +481,10 @@ public class API  extends ServerResource  implements DataProvider{
 			 * @param courseNumber Examples are CS1331, ECE2031
 			 */
 				public void postReply(String departmentCode, String courseNumber, String threadID, String postText) {
-				//	List<Post> myList =new ArrayList<Post>(); //I'll pass this into the last element of the Topic constructor
-				//	Topic newTopic=null;
+			
 					String data=null;
 					Representation result;
 					
-				  //  result.setMediaType(MediaType.)
 					String url ="http://dev.m.gatech.edu/developer/adehn3/api/techbook/department/"+departmentCode+"/class/"+courseNumber+"/forum/"+threadID+"/post/";
 					try {
 						Series<Cookie> seriesCookie=new Series<Cookie>(Cookie.class); //create series
@@ -589,54 +492,17 @@ public class API  extends ServerResource  implements DataProvider{
 						
 						ClientResource client = new ClientResource(url);
 						client.setCookies(seriesCookie); //addied series to ClientResource
-						
-						//JsonRepresentation jsonRep = new JsonRepresentation(client.get());
-						//System.out.println(url);
-						//				JSONArray ja =jsonRep.getJsonArray(); //The debugger says this is where failure occurs!
-						//JSONObject jo=jsonRep.getJsonObject();
-						
-						
-						//I create a JSON object, add the key/value pairs, then I invoke client.post. Is that it?
-//						JSONObject jo= new JSONObject();
-//					//	jo.put("prismID", prismID);  //This should be gotten from cookie I believe
-//						jo.put("subject", subject);
-//						jo.put("first_post", first_post);
+				
 						Map<String, String> params = new HashMap<String, String>();
 						params.put("postText", postText);
-						//mycourses courseDepartment && courseCode
-						//marked threads  threadID
+					
 						data = urlEncode(params);
-						//data="threadSubject="+subject+"&threadPost="+first_post;
-//						client.post(data, MediaType.MESSAGE_HTTP);
-//						client.post(myCookie, MediaType.APPLICATION_HTTP_COOKIES);
-//						client.post(data, MediaType.APPLICATION_HTTP_COOKIES);
-//						client.post(data, MediaType.TEXT_PLAIN);
-						//result = client.post(data, MediaType.APPLICATION_WWW_FORM);
-						//result.setMediaType(MediaType.APPLICATION_WWW_FORM);
+					
 						
 				        Representation r = client.post(getRepresentation(params));
 						
-						
-				//		System.out.println(r.getText());
-						System.out.println("done");
-						
-						
-						
-						
-						//JsonRepresentation jsonRep = new JsonRepresentation(client.post(jo));
-						
-						
-//						JSONArray ja=jo.getJSONArray("posts");
-//						for(int i=0; i<ja.length();i++){
-//							JSONObject j2=ja.getJSONObject(i);
-//							Post newPost =new Post(j2.getString("prismID").toString(),j2.getString("post").toString(),j2.getString("timestamp").toString());
-//							myList.add(newPost);
-//						}//end for loop
-		//
-//			            //I instantiate this at the end, because I need my list of Posts before I can use the constructor properly
-//						newTopic= new Topic(jo.get("prismID").toString(),jo.get("threadID").toString(),jo.get("subject").toString(),jo.get("first_post").toString(),jo.get("timestamp").toString(),myList);
-
-
+			
+					
 
 					} catch (ResourceException e) {
 						// TODO Auto-generated catch block

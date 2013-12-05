@@ -63,10 +63,10 @@ public class APITest extends TestCase {
 		List<Topic> myList = newAPI.getForumTopics("CS", "CS1331");
 		//	System.out.println(myList.get(0).toString());
 		assertEquals("jruiz30", myList.get(0).getPrismID());
-		assertEquals("44", myList.get(0).getThreadID());
-		assertEquals("new thread", myList.get(0).getSubject());
-		assertEquals("Need help", myList.get(0).getFirst_post());
-		assertEquals("2013-11-04 18:07:18", myList.get(0).getTimestamp());
+		assertEquals("103", myList.get(0).getThreadID());
+		assertEquals("", myList.get(0).getSubject());
+		assertEquals("", myList.get(0).getFirst_post());
+		assertEquals("2013-12-04 20:27:38", myList.get(0).getTimestamp());
 	}
 
 	public void testGetThreadInformation(){
