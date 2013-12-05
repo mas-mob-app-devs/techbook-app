@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >   
+    
+    <TextView
+        android:id="@+id/newthreadSubject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000" 
+        android:text="Subject:"
+        android:textSize="15sp" />
+    
+    <EditText
+        android:id="@+id/newThreadSubjectText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine" />
+    
+    <TextView
+        android:id="@+id/newthreadPost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000" 
+        android:text="Message:"
+        android:textSize="15sp" />
+    
+    <EditText
+        android:id="@+id/newthreadPostText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine" />
+ 
+     <Button
+        android:id="@+id/newthreadSubmitButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text=" Submit "
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        />
+    
+</LinearLayout>
