@@ -11,5 +11,6 @@
     <string name="button_login">Login</string>
     <string name="title_activity_logged_in">LoggedInActivity</string>
     <string name="techbook_logo_description">Techbook Logo</string>
+    <string name="title_activity_forum_load">ForumLoadActivity</string>
 
 </resources>

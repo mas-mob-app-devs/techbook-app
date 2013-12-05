@@ -7,10 +7,42 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ForumActivity" >
-
-    <TextView
-        android:layout_width="wrap_content"
+    
+    <LinearLayout 
+        android:id="@+id/forumParent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:orientation="vertical" >
+        
+        <LinearLayout
+            android:id="@+id/forumHeader"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical" >
+            
+            <TextView
+       			android:id="@+id/forumTitle"
+        		android:layout_width="fill_parent"
+        		android:layout_height="wrap_content"
+        		android:gravity="left"
+        		android:text="Forum Title"
+        		android:textSize="30sp" />
+            
+            <Button
+        		android:id="@+id/threadEntryPostButton"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="New Thread"
+        		android:layout_gravity="right" />
+        </LinearLayout>
+        
+        <ExpandableListView
+           android:id="@+id/forumList"
+           android:layout_height="match_parent"
+           android:layout_width="match_parent"/>  
+        
+    </LinearLayout>
+
+    
 
 </RelativeLayout>
