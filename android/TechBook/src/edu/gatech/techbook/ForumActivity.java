@@ -1,19 +1,14 @@
 package edu.gatech.techbook;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.EditText;
-import android.widget.Toast;
 import api.API;
 import api.Topic;
 

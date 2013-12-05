@@ -37,12 +37,11 @@ public class LoggedInActivity extends Activity {
 	    LoggedInActivity.loggedInApi = new API(sessionName, sessionId); 
 	    
 	    //Intent homeIntent = new Intent(this, HomeActivity.class);
-	    Intent homeIntent = new Intent(this, ForumActivity.class);
+	    Intent homeIntent = new Intent(this, HomeActivity.class);
 //	    Bundle bundle = homeIntent.getExtras();
 //	    bundle.putString("department", "CS");
 //	    bundle.putString("course", "CS1331");
-	    homeIntent.putExtra("department", "CS");
-	    homeIntent.putExtra("course", "CS1332");
+	    
 	    startActivity(homeIntent);
 	    
 	}
