@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.support.v4.app.NavUtils;
 
 public class CourseActivity extends Activity {
@@ -14,6 +17,12 @@ public class CourseActivity extends Activity {
 		setContentView(R.layout.activity_course);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		setTitle((String)getIntent().getExtras().get("course"));
+		Button addCourse = (Button) findViewById(R.id.addCourseBtn);
+		Button goToForum = (Button) findViewById(R.id.goToForum);
+		addCourse.setOnClickListener(new AddCourseBtnClickListener());
+		goToForum.setOnClickListener(new GoToForumBtnClickListener());
+		
 	}
 
 	/**
@@ -47,6 +56,25 @@ public class CourseActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private class AddCourseBtnClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			
+			
+		}
+	}
+	
+	private class GoToForumBtnClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO -- start the forum activity with the course name as intent
+			
+		}
+		
 	}
 
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dip"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/threadPostUser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Loading username" />
+	
+   	<TextView
+        android:id="@+id/threadPostDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Loading post date" />
+ 
+    <TextView
+        android:id="@+id/threadPostText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="5dp"
+        android:text="Loading posts"
+        android:textSize="17dip" />
+
+    <EditText
+        android:id="@+id/threadEntryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:visibility="gone" >
+
+    	<requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/threadEntryPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reply"
+        android:visibility="gone" />
+ 
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="#FFFFFF">
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="#FFFFFF"
+    android:weightSum="1">
+    
+    	<TextView
+        	android:id="@+id/threadHeaderUser"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="0.5"
+        	android:gravity="left"
+        	android:text="Loading username" />
+	
+	    <TextView
+	        android:id="@+id/threadHeaderDate"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.5"
+	        android:gravity="right"
+	        android:text="Loading post date" />
+	
+	</LinearLayout>
+	    
+    <TextView
+        android:id="@+id/threadHeaderSubject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:text="Loading forum subjects"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:gravity="center" />
+ 
+</LinearLayout>

@@ -7,7 +7,11 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 
+import api.API;
+
 public class LoggedInActivity extends Activity {
+	
+	public static API loggedInApi;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,15 @@ public class LoggedInActivity extends Activity {
 	    
 	    // TODO Create API calling object
 	    
-	    Intent homeIntent = new Intent(this, HomeActivity.class);
+	    LoggedInActivity.loggedInApi = new API(sessionName, sessionId); 
+	    
+	    //Intent homeIntent = new Intent(this, HomeActivity.class);
+	    Intent homeIntent = new Intent(this, ForumActivity.class);
+//	    Bundle bundle = homeIntent.getExtras();
+//	    bundle.putString("department", "CS");
+//	    bundle.putString("course", "CS1331");
+	    homeIntent.putExtra("department", "CS");
+	    homeIntent.putExtra("course", "CS1332");
 	    startActivity(homeIntent);
 	    
 	}

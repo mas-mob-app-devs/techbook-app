@@ -28,10 +28,10 @@ public class HomeActivity extends Activity {
 		final ListView recForumListView = (ListView) findViewById(R.id.recentForumList);
 		API api = new API();
 		String[] values = new String[5];
-		List<Course> myRecentForums = api.getMyRecentForums("rkumar68");
+		List<Course> myRecentForums = api.getMyRecentForums("jruiz30");
 		int displayCount = Math.min(myRecentForums.size(), 5);
 		for(int i=0; i< displayCount ; i++) {
-			values[i] = myRecentForums.get(i).getDepartmentCode() + myRecentForums.get(i).getCourseNumber();  
+			values[i] = myRecentForums.get(i).getCourseNumber();  
 		}
 
 	    final ArrayList<String> list = new ArrayList<String>();
