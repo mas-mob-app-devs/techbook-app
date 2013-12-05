@@ -27,7 +27,6 @@
         <activity
             android:name="edu.gatech.techbook.HomeActivity"
             android:label="@string/title_activity_home" >
-            
         </activity>
         <activity
             android:name="edu.gatech.techbook.CourseActivity"
@@ -54,6 +53,10 @@
                     android:host="loggedin"
                     android:scheme="techbook" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.gatech.techbook.ForumLoadActivity"
+            android:label="@string/title_activity_forum_load" >
         </activity>
     </application>
 
