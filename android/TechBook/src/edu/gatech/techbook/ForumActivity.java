@@ -6,10 +6,12 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Dialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -71,6 +73,9 @@ public class ForumActivity extends Activity {
 		expListAdapter = new ExpandableListAdapter(this, expListView, department, course, topicList, populatedTopicList);
 		
 		expListView.setAdapter(expListAdapter);
+		
+		Button newThreadButton = (Button) findViewById(R.id.forumNewThreadButton);
+		newThreadButton.setOnClickListener(new NewThreadHandler(this, department, course));
 	}
 
 	@Override
@@ -78,6 +83,57 @@ public class ForumActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.forum, menu);
 		return true;
+	}
+	
+	private class NewThreadHandler implements OnClickListener {
+		
+		private Activity callingActivity;
+		private String department;
+		private String course;
+
+		public NewThreadHandler(Activity callingActivity, String department, String course) {
+			this.callingActivity = callingActivity;
+			this.department = department;
+			this.course = course;
+		}
+		
+		@Override
+		public void onClick(View arg0) {
+			Dialog newthreadDialog = new Dialog(callingActivity);
+			newthreadDialog.setContentView(R.layout.dialog_new_thread);
+			newthreadDialog.setTitle("New Thread");
+			
+			Button submitButton = (Button) newthreadDialog.findViewById(R.id.newthreadSubmitButton);
+			submitButton.setOnClickListener(new SubmitNewThreadHandler(newthreadDialog, department, course));
+		}
+		
+		private class SubmitNewThreadHandler implements OnClickListener {
+
+			Dialog dialog;
+			private String department;
+			private String course;
+			
+			public SubmitNewThreadHandler(Dialog dialog, String department, String course) {
+				this.dialog = dialog;
+				this.department = department;
+				this.course = course;
+			}
+			
+			@Override
+			public void onClick(View v) {
+				
+				EditText threadSubjectText = (EditText) dialog.findViewById(R.id.newThreadSubjectText);
+				EditText threadPostText = (EditText) dialog.findViewById(R.id.newthreadPostText);
+				
+				String threadSubject = threadSubjectText.getText().toString();
+				String threadPost = threadPostText.getText().toString();
+				
+				LoggedInActivity.loggedInApi.postTopic(department, course, threadSubject, threadPost);
+				dialog.dismiss();
+			}
+			
+		}
+		
 	}
 	
 }

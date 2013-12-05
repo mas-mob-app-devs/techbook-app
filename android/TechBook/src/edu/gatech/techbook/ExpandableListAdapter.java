@@ -86,6 +86,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     		postEntryPostButton.setOnClickListener(buttonListener);
     		postEntryPostButton.clearComposingText();
     		postEntryPostButton.clearFocus();
+    		postEntryPostButton.requestFocus(); //Added this line to get the focus, 12:17AM
     		Log.d("ExpandableListAdapter", "childNum=" + childPosition);
     	} else {
     		postUserView.setVisibility(View.VISIBLE);
