@@ -8,8 +8,7 @@ import junit.framework.TestCase;
 public class APITest extends TestCase {
 
 
-	API newAPI = new API("PHPSESSID", "6tder7n69cngnacqcb476fhjq3");
-
+	API newAPI = new API("PHPSESSID", "mt7lgsbhd5k82devopokgvka36");
 	public static void setUpBeforeClass() throws Exception {
 
 	}
@@ -63,7 +62,7 @@ public class APITest extends TestCase {
 		//	API newAPI = new API();
 		List<Topic> myList = newAPI.getForumTopics("CS", "CS1331");
 		//	System.out.println(myList.get(0).toString());
-		assertEquals("rkumar68", myList.get(0).getPrismID());
+		assertEquals("jruiz30", myList.get(0).getPrismID());
 		assertEquals("44", myList.get(0).getThreadID());
 		assertEquals("new thread", myList.get(0).getSubject());
 		assertEquals("Need help", myList.get(0).getFirst_post());
@@ -79,6 +78,23 @@ public class APITest extends TestCase {
 		assertEquals("Hey, I'm commenting on your thread!",newTopic.getPosts().get(0).getPost());
 		assertEquals("2013-10-07 14:46:52",newTopic.getPosts().get(0).getTimeStamp());
 
+	}
+	
+	public void testPostTopic(){
+		
+		newAPI.postTopic("CS", "CS2110", "Its working again part 2", "Yes it is working");
+		
+	}//end post
+	
+	public void testPostReply(){
+		newAPI.postReply("CS", "CS1331", "1", "Android Reply!");
+	}
+	public void testPostMyCourses(){
+		newAPI.addToMyCourses("CS", "CS1331");
+	}
+	
+	public void testBookmarkThreads(){
+		newAPI.bookmarkThreads("11");
 	}
 
 }
