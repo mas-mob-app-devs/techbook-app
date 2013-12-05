@@ -97,9 +97,11 @@ public class ForumActivity extends Activity {
 		
 		@Override
 		public void onClick(View arg0) {
+			Log.d("NewThreadHandler", "New Thread was pressed");
 			Dialog newthreadDialog = new Dialog(callingActivity);
 			newthreadDialog.setContentView(R.layout.dialog_new_thread);
 			newthreadDialog.setTitle("New Thread");
+			newthreadDialog.show();
 			
 			Button submitButton = (Button) newthreadDialog.findViewById(R.id.newthreadSubmitButton);
 			submitButton.setOnClickListener(new SubmitNewThreadHandler(newthreadDialog, department, course));
